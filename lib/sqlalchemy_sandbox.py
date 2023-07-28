@@ -59,11 +59,16 @@ if __name__ == '__main__':
     session.bulk_save_objects([albert_einstein, alan_turing])
     session.commit()
 
-    for student in session.query(Student):
-        student.grade += 1
+    query = session.query(
+        Student).filter(
+        Student.name == "Albert Einstein")
 
+    albert_einstein = query.first()
+
+    session.delete(albert_einstein)
     session.commit()
 
-    print([(student.name,
-            student.grade) for student in session.query(Student)])
+    albert_einstein = query.first()
+
+    print(albert_einstein)
 
