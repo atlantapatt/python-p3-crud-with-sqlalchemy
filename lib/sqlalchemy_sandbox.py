@@ -59,10 +59,7 @@ if __name__ == '__main__':
     session.bulk_save_objects([albert_einstein, alan_turing])
     session.commit()
 
-    query = session.query(Student).filter(Student.name.like('%Alan%'),
-        Student.grade == 11).all()
-    
+    students = session.query(Student).all()
 
-    for record in query:
-        print(record.name)
+    print(students)
 
