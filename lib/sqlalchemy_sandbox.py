@@ -59,9 +59,9 @@ if __name__ == '__main__':
     session.bulk_save_objects([albert_einstein, alan_turing])
     session.commit()
 
-    students_by_name = session.query(
-            Student.name).order_by(
-            Student.name).all()
+    students_by_grade_desc = session.query(
+            Student.name, Student.grade).order_by(
+                desc(Student.grade)).all()
     
-    print(students_by_name)
+    print(students_by_grade_desc)
 
