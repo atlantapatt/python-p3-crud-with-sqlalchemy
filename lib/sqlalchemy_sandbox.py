@@ -59,9 +59,10 @@ if __name__ == '__main__':
     session.bulk_save_objects([albert_einstein, alan_turing])
     session.commit()
 
-    oldest_student = session.query(
-            Student.name, Student.birthday).order_by(
-            Student.birthday).limit(1).all
+    query = session.query(Student).filter(Student.name.like('%Alan%'),
+        Student.grade == 11).all()
     
-    print(oldest_student)
+
+    for record in query:
+        print(record.name)
 
